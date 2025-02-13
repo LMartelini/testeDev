@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+
+  #Laravel App
+  app:
+    container_name: "teste-app"
+    build:
+      args:
+        user: laravel
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: teste-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ../:/var/www:delegated
+    networks:
+      - laravelnetwork
+
+  #Nginx Service
+  nginx:
+    container_name: "teste-nginx"
+    build:
+      context: ./
+      dockerfile: DockerfileNginxDev
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../:/var/www:delegated
+      - ./nginx/conf.d/dev:/etc/nginx/conf.d
+      - nginx-letsencrypt:/etc/letsencrypt
+    networks:
+      - laravelnetwork
+  # MySQL Service
+  mysql:
+   image: 'mysql/mysql-server:8.0'
+   ports:
+     - '${FORWARD_DB_PORT:-3306}:3306'
+   environment:
+     MYSQL_ROOT_PASSWORD: 'password'
+     MYSQL_ROOT_HOST: '%'
+     MYSQL_DATABASE: 'laravel'
+     MYSQL_USER: 'laravel'
+     MYSQL_PASSWORD: 'password'
+     MYSQL_ALLOW_EMPTY_PASSWORD: 1
+   networks:
+     - laravelnetwork
+
+networks:
+  laravelnetwork:
+    driver: bridge
+
+volumes:
+  nginx-letsencrypt:
