@@ -3,8 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bandeira;
 
 class Grupo extends Model
 {
-    //
+    use HasFactory;
+
+    protected $table = 'grupos';
+    protected $fillable = ['nome'];
+
+    public function bandeiras()
+    {
+        return $this->hasMany(Bandeira::class);
+    }
 }
