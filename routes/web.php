@@ -7,7 +7,7 @@ use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\UnidadeController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
