@@ -85,23 +85,27 @@
             </div>
 
             <div class="middle-section">
-                <a href="{{ route('grupo.index') }}">
+                <a href="{{ route('grupos.index') }}">
                     <i class="fa-solid fa-building"></i>
                     <span>Grupos econômicos</span>
                 </a>
-                <a href="{{ route('bandeira.index') }}">
+                {{-- <a href="{{ route('bandeira.index') }}"> --}}
+                <a href="#">
                     <i class="fa-solid fa-flag"></i>
                     <span>Bandeiras</span>
                 </a>
-                <a href="{{ route('unidade.index') }}">
+                {{-- <a href="{{ route('unidade.index') }}"> --}}
+                <a href="#">
                     <i class="fa-solid fa-shop"></i>
                     <span>Unidades</span>
                 </a>
-                <a href="{{ route('colaborador.index') }}">
+                {{-- <a href="{{ route('colaborador.index') }}"> --}}
+                <a href="#">
                     <i class="fa-solid fa-users"></i>
                     <span>Colaboradores</span>
                 </a>
-                <a href="{{ route('relatorio.index') }}">
+                {{-- <a href="{{ route('relatorio.index') }}"> --}}
+                <a href="#">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Relatórios</span>
                 </a>
