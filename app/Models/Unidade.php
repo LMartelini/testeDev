@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\Bandeira;
 use App\Models\Colaborador;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Unidade extends Model
 {
@@ -15,11 +15,11 @@ class Unidade extends Model
 
     public function bandeira()
     {
-        return $this->belongsTo(Bandeira::class);
+        return $this->belongsTo(Bandeira::class, 'bandeira_id', 'id');
     }
 
     public function colaboradores()
     {
-        return $this->hasMany(Colaborador::class);
+        return $this->hasMany(Colaborador::class, 'unidade_id', 'id');
     }
 }

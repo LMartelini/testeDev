@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bandeiras', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->foreignId('grupo_economico_id')->constrained('grupos')->onDelete('cascade');
+            $table->foreignId('grupo_economico_id')->constrained('grupos');
             $table->timestamps();
         });
     }

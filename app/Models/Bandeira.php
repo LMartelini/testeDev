@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Models;
-use App\Models\GrupoEconomico;
-use App\Models\Unidade;
-
+use App\Models\Grupo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Bandeira extends Model
 {
@@ -15,7 +14,7 @@ class Bandeira extends Model
 
     public function grupoEconomico()
     {
-        return $this->belongsTo(GrupoEconomico::class);
+        return $this->belongsTo(Grupo::class, 'grupo_economico_id', 'id');
     }
 
     public function unidades()

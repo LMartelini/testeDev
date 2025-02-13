@@ -2,22 +2,31 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Grupo;
+use App\Models\Bandeira;
+use App\Models\Unidade;
+use App\Models\Colaborador;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Grupo::factory()
+            ->count(5) 
+            ->has(
+                Bandeira::factory()
+                    ->count(3)
+                    ->has(
+                        Unidade::factory()
+                            ->count(2)
+                            ->has(
+                                Colaborador::factory()
+                                    ->count(5),
+                                    'colaboradores'
+                            )
+                    )
+            )
+            ->create();
     }
 }
