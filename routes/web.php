@@ -5,6 +5,7 @@ use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\BandeiraController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\UnidadeController;
+use App\Http\Controllers\RelatorioController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -21,4 +22,7 @@ Route::middleware(['auth'])->group(function () {
         'colaboradores' => 'colaborador', 
     ]);
     Route::resource('unidades', UnidadeController::class);
+    Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
+    Route::get('/export/excel', [RelatorioController::class, 'exportExcel'])->name('export.excel');
+    Route::get('/export/pdf', [RelatorioController::class, 'exportPdf'])->name('export.pdf');
 });

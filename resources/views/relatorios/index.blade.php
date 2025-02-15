@@ -1,27 +1,26 @@
 @extends('layouts.sidebar')
 
 @section('title')
-{{ $title ?? 'Título Padrão' }}
+{{ $title ?? 'Relatórios' }}
 @endsection
 
 @section('content')
 <div class="container">
-    <h1>Relatórios</h1>
     <p>Gere e baixe relatórios para sua organização.</p>
 
     <div class="filter-export-container">
-        <div class="filters">
+        <form method="GET" action="{{ route('relatorios.index') }}">
             <label for="date-range">Filtrar por:</label>
-            <select id="date-range">
-                <option value="30">Últimos 30 dias</option>
-                <option value="60">Últimos 60 dias</option>
-                <option value="90">Últimos 90 dias</option>
+            <select id="date-range" name="days" onchange="this.form.submit()">
+                <option value="30" {{ $days == 30 ? 'selected' : '' }}>Últimos 30 dias</option>
+                <option value="60" {{ $days == 60 ? 'selected' : '' }}>Últimos 60 dias</option>
+                <option value="90" {{ $days == 90 ? 'selected' : '' }}>Últimos 90 dias</option>
             </select>
-        </div>
+        </form>
 
         <div class="export-options">
-            <button onclick="exportReport('employee', 'pdf')">Exportar para PDF</button>
-            <button onclick="exportReport('employee', 'excel')">Exportar para Excel</button>
+            <a href="{{ route('export.excel') }}" class="btn btn-primary">Exportar para Excel</a>
+            <a href="{{ route('export.pdf') }}" class="btn btn-primary">Exportar para PDF</a>
         </div>
     </div>
 
@@ -137,6 +136,11 @@ table th {
 
 table tbody tr:hover {
     background-color: #f1f1f1;
+}
+
+#date-range{
+    padding: 5px;
+    border-radius: 6px;
 }
 </style>
 @endsection

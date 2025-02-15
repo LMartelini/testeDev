@@ -98,12 +98,10 @@
                     <span>Unidades</span>
                 </a>
                 <a href="{{ route('colaboradores.index') }}">
-                {{-- <a href="#"> --}}
                     <i class="fa-solid fa-users"></i>
                     <span>Colaboradores</span>
                 </a>
-                {{-- <a href="{{ route('relatorio.index') }}"> --}}
-                <a href="#">
+                <a href="{{ route('relatorios.index') }}">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Relatórios</span>
                 </a>
