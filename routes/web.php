@@ -17,6 +17,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
     Route::resource('grupos', GrupoEconomicoController::class);
     Route::resource('bandeiras', BandeiraController::class);
-    Route::resource('colaboradores', ColaboradorController::class);
+    Route::resource('colaboradores', ColaboradorController::class)->parameters([
+        'colaboradores' => 'colaborador', 
+    ]);
     Route::resource('unidades', UnidadeController::class);
 });

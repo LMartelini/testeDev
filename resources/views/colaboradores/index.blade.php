@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Unidades')
+@section('title', 'Colaboradores')
 
 @section('content')
     <style>
@@ -45,48 +45,48 @@
         }
     </style>
 
-    <a href="{{ route('unidades.create') }}" class="btn btn-primary mb-3">Novo</a>
+    <a href="{{ route('colaboradores.create') }}" class="btn btn-primary mb-3">Novo</a>
 
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome Fantasia</th>
-                <th>Razão Social</th>
-                <th>CNPJ</th>
-                <th>Bandeira</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Unidade</th>
                 <th>Data de Criação</th>
                 <th>Última Atualização</th>
                 <th>Ação</th>
             </tr>
         </thead>
+
         <tbody>
-            @foreach($unidades as $unidade)
+            @foreach($colaboradores as $colaborador)
                 <tr>
-                    <td>{{ $unidade->id }}</td>
-                    <td>{{ $unidade->nome_fantasia }}</td>
-                    <td>{{ $unidade->razao_social }}</td>
-                    <td>{{ $unidade->cnpj }}</td>
-                    <td>{{ $unidade->bandeira->nome }}</td>
-                    <td>{{ $unidade->created_at->format('d/m/Y H:i') }}</td>
-                    <td>{{ $unidade->updated_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $colaborador->id }}</td>
+                    <td>{{ $colaborador->nome }}</td>
+                    <td>{{ $colaborador->email }}</td>
+                    <td>{{ $colaborador->cpf }}</td>
+                    <td>{{ $colaborador->unidade->nome }}</td>
+                    <td>{{ $colaborador->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $colaborador->updated_at->format('d/m/Y H:i') }}</td>
                     <td>
                         <div class="action-buttons">
-                            <a href="{{ route('unidades.edit', $unidade->id) }}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form action="{{ route('unidades.destroy', $unidade->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta unidade?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </div>
+                                <a href="{{ route('colaboradores.edit', $colaborador->id) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('colaboradores.destroy', $colaborador->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este colaborador?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-
 @endsection
