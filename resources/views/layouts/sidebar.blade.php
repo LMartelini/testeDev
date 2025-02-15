@@ -89,18 +89,16 @@
                     <i class="fa-solid fa-building"></i>
                     <span>Grupos econômicos</span>
                 </a>
-                {{-- <a href="{{ route('bandeira.index') }}"> --}}
-                <a href="#">
+                <a href="{{ route('bandeiras.index') }}">
                     <i class="fa-solid fa-flag"></i>
                     <span>Bandeiras</span>
                 </a>
-                {{-- <a href="{{ route('unidade.index') }}"> --}}
-                <a href="#">
+                <a href="{{ route('unidades.index') }}">
                     <i class="fa-solid fa-shop"></i>
                     <span>Unidades</span>
                 </a>
-                {{-- <a href="{{ route('colaborador.index') }}"> --}}
-                <a href="#">
+                <a href="{{ route('colaboradores.index') }}">
+                {{-- <a href="#"> --}}
                     <i class="fa-solid fa-users"></i>
                     <span>Colaboradores</span>
                 </a>

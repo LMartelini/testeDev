@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Grupos Econômicos')
+@section('title', 'Unidades')
 
 @section('content')
 
@@ -46,31 +46,37 @@
         }
     </style>
 
-    <a href="{{ route('grupos.create') }}" class="btn btn-primary mb-3">Novo</a>
+    <a href="{{ route('unidades.create') }}" class="btn btn-primary mb-3">Novo</a>
 
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Data de criação</th>
-                <th>Última atualização</th>
+                <th>Nome Fantasia</th>
+                <th>Razão Social</th>
+                <th>CNPJ</th>
+                <th>Bandeira</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
                 <th>Ação</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($grupos as $grupo)
+            @foreach($unidades as $unidade)
                 <tr>
-                    <td>{{ $grupo->id }}</td>
-                    <td>{{ $grupo->nome }}</td>
-                    <td>{{ $grupo->created_at->format('d/m/Y H:i') }}</td>
-                    <td>{{ $grupo->updated_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $unidade->id }}</td>
+                    <td>{{ $unidade->nome_fantasia }}</td>
+                    <td>{{ $unidade->razao_social }}</td>
+                    <td>{{ $unidade->cnpj }}</td>
+                    <td>{{ $unidade->bandeira->nome }}</td>
+                    <td>{{ $unidade->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $unidade->updated_at->format('d/m/Y H:i') }}</td>
                     <td>
                         <div class="action-buttons">
-                            <a href="{{ route('grupos.edit', $grupo->id) }}">
+                            <a href="{{ route('unidades.edit', $unidade->id) }}">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('grupos.destroy', $grupo->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este grupo?')">
+                            <form action="{{ route('unidades.destroy', $unidade->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta unidade?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">

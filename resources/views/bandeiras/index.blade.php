@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Grupos Econômicos')
+@section('title', 'Bandeiras')
 
 @section('content')
 
@@ -46,31 +46,33 @@
         }
     </style>
 
-    <a href="{{ route('grupos.create') }}" class="btn btn-primary mb-3">Novo</a>
+    <a href="{{ route('bandeiras.create') }}" class="btn btn-primary mb-3">Novo</a>
 
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Data de criação</th>
-                <th>Última atualização</th>
+                <th>Grupo Econômico</th>
+                <th>Data de Criação</th>
+                <th>Última Atualização</th>
                 <th>Ação</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($grupos as $grupo)
+            @foreach($bandeiras as $bandeira)
                 <tr>
-                    <td>{{ $grupo->id }}</td>
-                    <td>{{ $grupo->nome }}</td>
-                    <td>{{ $grupo->created_at->format('d/m/Y H:i') }}</td>
-                    <td>{{ $grupo->updated_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $bandeira->id }}</td>
+                    <td>{{ $bandeira->nome }}</td>
+                    <td>{{ $bandeira->grupoEconomico->nome }}</td>
+                    <td>{{ $bandeira->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $bandeira->updated_at->format('d/m/Y H:i') }}</td>
                     <td>
                         <div class="action-buttons">
-                            <a href="{{ route('grupos.edit', $grupo->id) }}">
+                            <a href="{{ route('bandeiras.edit', $bandeira->id) }}">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('grupos.destroy', $grupo->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este grupo?')">
+                            <form action="{{ route('bandeiras.destroy', $bandeira->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta bandeira?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">

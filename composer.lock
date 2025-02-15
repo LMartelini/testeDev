@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7159c5237c3c2e75dbd1d23c85e732c",
+    "content-hash": "84f17c7645be73b77561baa08bca7399",
     "packages": [
         {
             "name": "brick/math",
@@ -1053,6 +1053,118 @@
                 }
             ],
             "time": "2025-02-03T10:55:03+00:00"
+        },
+        {
+            "name": "jansenfelipe/cnpj-gratis",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jansenfelipe/cnpj-gratis.git",
+                "reference": "4758c081c77a41e8bdf4661687ec6a197c54f45b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jansenfelipe/cnpj-gratis/zipball/4758c081c77a41e8bdf4661687ec6a197c54f45b",
+                "reference": "4758c081c77a41e8bdf4661687ec6a197c54f45b",
+                "shasum": ""
+            },
+            "require": {
+                "jansenfelipe/utils": "1.0.*@dev",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "jansenfelipe/cep-gratis": "Permite consulta de CEP no site dos Correios",
+                "jansenfelipe/cpf-gratis": "Permite consulta de CPF no site da receita"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "JansenFelipe\\CnpjGratis": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jansen Felipe",
+                    "email": "jansen.felipe@gmail.com"
+                }
+            ],
+            "description": "Com esse pacote você poderá consultar, gratuitamente, CNPJs diretamente no site da receita.",
+            "keywords": [
+                "cnpj",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/jansenfelipe/cnpj-gratis/issues",
+                "source": "https://github.com/jansenfelipe/cnpj-gratis/tree/v1.0.5"
+            },
+            "time": "2014-10-22T11:32:08+00:00"
+        },
+        {
+            "name": "jansenfelipe/utils",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jansenfelipe/utils.git",
+                "reference": "13ab35ccbb64fbc40ff3e2e700eef4dddf1ed106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jansenfelipe/utils/zipball/13ab35ccbb64fbc40ff3e2e700eef4dddf1ed106",
+                "reference": "13ab35ccbb64fbc40ff3e2e700eef4dddf1ed106",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit-skeleton-generator": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "JansenFelipe\\Utils": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jansen Felipe",
+                    "email": "jansen.felipe@gmail.com"
+                }
+            ],
+            "description": "Uma simples classe utilitária com métodos que podem salvar sua vida (ou não)",
+            "keywords": [
+                "laravel",
+                "php",
+                "util"
+            ],
+            "support": {
+                "issues": "https://github.com/jansenfelipe/utils/issues",
+                "source": "https://github.com/jansenfelipe/utils/tree/v1.0.6"
+            },
+            "time": "2015-05-27T20:18:58+00:00"
         },
         {
             "name": "laravel/framework",
