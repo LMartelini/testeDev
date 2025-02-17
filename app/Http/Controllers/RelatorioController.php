@@ -17,11 +17,19 @@ class RelatorioController extends Controller
         $days = $request->query('days', 30); 
         $startDate = Carbon::now()->subDays($days);
 
+        $sortBy = $request->query('sort_by', 'created_at'); 
+        $sortOrder = $request->query('sort_order', 'asc');   
+        
+        if (!in_array($sortOrder, ['asc', 'desc'])) {
+            $sortOrder = 'asc';
+        }
+        
         $colaboradores = Colaborador::with('unidade')
             ->where('created_at', '>=', $startDate)
+            ->orderBy($sortBy, $sortOrder)  
             ->get();
 
-        return view('relatorios.index', compact('colaboradores', 'days'));
+        return view('relatorios.index', compact('colaboradores', 'days', 'sortBy', 'sortOrder'));
     }
 
     public function exportExcel()

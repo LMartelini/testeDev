@@ -28,13 +28,62 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>CPF</th>
-                    <th>Unidade</th>
-                    <th>Data de criação</th>
-                    <th>Última atualização</th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'id', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            ID
+                            @if($sortBy == 'id')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'nome', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            Nome
+                            @if($sortBy == 'nome')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'email', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            Email
+                            @if($sortBy == 'email')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'cpf', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            CPF
+                            @if($sortBy == 'cpf')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'unidade.nome_fantasia', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            Unidade
+                            @if($sortBy == 'unidade.nome_fantasia')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'created_at', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            Data de criação
+                            @if($sortBy == 'created_at')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('relatorios.index', ['days' => $days, 'sort_by' => 'updated_at', 'sort_order' => $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                            Última atualização
+                            @if($sortBy == 'updated_at')
+                                <i class="sort-icon">{{ $sortOrder == 'asc' ? '↑' : '↓' }}</i>
+                            @endif
+                        </a>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -54,93 +103,58 @@
     </div>
 </div>
 
-<script>
-    function exportReport(reportType, format) {
-        const dateRange = document.getElementById('date-range').value;
-        alert(`Exportando relatório de ${reportType} para os últimos ${dateRange} dias em ${format.toUpperCase()}`);
-    }
-</script>
-
 <style>
-.container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    .sort-icon {
+        margin-left: 5px;
+        font-size: 14px;
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-h1 {
-    margin-bottom: 20px;
-}
+    th a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
 
-.filter-export-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
+    th a:hover {
+        text-decoration: underline;
+    }
 
-.filters {
-    display: flex;
-    align-items: center;
-}
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
 
-.filters label {
-    margin-right: 10px;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
 
-.filters select {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-}
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-.export-options {
-    display: flex;
-    gap: 10px;
-}
+    table th {
+        background-color: #f9f9f9;
+        font-weight: bold;
+    }
 
-.export-options button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
 
-.export-options button:hover {
-    background: #0056b3;
-}
+    #date-range {
+        padding: 5px;
+        border-radius: 6px;
+    }
 
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table th, table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-}
-
-table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-#date-range{
-    padding: 5px;
-    border-radius: 6px;
-}
+    .export-options{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 </style>
 @endsection
