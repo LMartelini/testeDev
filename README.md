@@ -66,7 +66,7 @@ Este é um projeto de um sistema de gestão, desenvolvido com Laravel 11, MySQL 
 
 4. Gerar a chave da aplicação
 
-    Após configurar o .env, execute o comando abaixo para gerar a chave de aplicação do Laravel:
+    Após configurar o .env, execute o comando abaixo para gerar a chave de aplicação do Laravel (deve ser executado dentro do container do Laravel):
 
     php artisan key:generate
 
