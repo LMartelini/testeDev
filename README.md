@@ -55,22 +55,21 @@ Este é um projeto de um sistema de gestão, desenvolvido com Laravel 11, MySQL 
     DB_PASSWORD=password
 
     - Nota: Certifique-se de ajustar essas configurações conforme necessário para o seu ambiente de desenvolvimento. O DB_HOST deve apontar para o nome do container MySQL configurado no Docker, que, neste caso, é mysql.
+  
+    ### Subir os containers com Docker Compose
+    
+    1. Para rodar o projeto com Docker, execute o comando abaixo. Isso irá subir os containers para o Laravel, Nginx e MySQL:
+    
+       docker-compose up -d
+
+   - Isso vai iniciar os containers para Laravel, Nginx e MySQL. O Docker Compose vai buscar o arquivo docker-compose.yml.
 
 4. Gerar a chave da aplicação
 
     Após configurar o .env, execute o comando abaixo para gerar a chave de aplicação do Laravel:
 
     php artisan key:generate
-   
 
-### Subir os containers com Docker Compose
-
-1. Para rodar o projeto com Docker, execute o comando abaixo. Isso irá subir os containers para o Laravel, Nginx e MySQL:
-
-
-   docker-compose up -d
-
-   - Isso vai iniciar os containers para Laravel, Nginx e MySQL. O Docker Compose vai buscar o arquivo docker-compose.yml.
 
 2. Executar as migrações do banco de dados
 
