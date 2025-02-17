@@ -1,66 +1,108 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Teste Desenvolvedor FullStack
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um projeto de um sistema de gestão, desenvolvido com Laravel 11, MySQL e PHPunit para testes unitários. A aplicação segue uma estrutura organizada com containers Docker para facilitar o desenvolvimento local.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologias
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- *Laravel 11*: framework PHP utilizado para o desenvolvimento da API.
+- *MySQL*: Banco de dados utilizado para armazenar as informações.
+- *PHPunit*: Framework de testes unitários utilizado no projeto.
+- *Docker Compose*: Usado para rodar a aplicação e o banco de dados MySQL em containers.
+- *Nginx*: Servidor web configurado para gerenciar as requisições.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Pré-requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Docker para rodar os containers.
+- Docker Compose para gerenciar múltiplos containers (como o banco de dados e o servidor da aplicação).
+- Node.js e npm para instalar as dependências JavaScript da aplicação.
+- Composer: Gerenciador de dependências PHP, necessário para instalar as dependências do Laravel.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+### Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Clonar o repositório
 
-### Premium Partners
+   git clone https://github.com/LMartelini/testeDev.git
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   cd testeDev
+   
 
-## Contributing
+2. Configurar o ambiente
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   npm install
+   
 
-## Code of Conduct
+3. Setar variáveis de ambiente
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   Crie um arquivo .env na raíz do seu diretório e adicione as seguintes variáveis:
 
-## Security Vulnerabilities
+    DB_CONNECTION=mysql
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    DB_HOST=mysql
 
-## License
+    DB_PORT=3306
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    DB_DATABASE=teste_dev
+
+    DB_USERNAME=root
+
+    DB_PASSWORD=password
+
+    - Nota: Certifique-se de ajustar essas configurações conforme necessário para o seu ambiente de desenvolvimento. O DB_HOST deve apontar para o nome do container MySQL configurado no Docker, que, neste caso, é mysql.
+
+4. Gerar a chave da aplicação
+
+    Após configurar o .env, execute o comando abaixo para gerar a chave de aplicação do Laravel:
+
+    php artisan key:generate
+   
+
+### Subir os containers com Docker Compose
+
+1. Para rodar o projeto com Docker, execute o comando abaixo. Isso irá subir os containers para o Laravel, Nginx e MySQL:
+
+
+   docker-compose up -d
+
+   - Isso vai iniciar os containers para Laravel, Nginx e MySQL. O Docker Compose vai buscar o arquivo docker-compose.yml.
+
+2. Executar as migrações do banco de dados
+
+   php artisan migrate
+
+   - Nota: O comando php artisan migrate é executado dentro do container da aplicação Laravel.
+   
+
+3. Iniciar a aplicação
+
+   npm run dev
+
+   Isso vai iniciar a aplicação, e ela estará disponível em http://localhost. 
+
+### Rodar testes
+
+Para rodar testes unitários, rode o comando:
+
+php artisan test
+
+
+---
+
+<h3 align='center'>Desenvolvido por Laís Martelini</h3>
+<div align='center'>
+  <a href="mailto:laismartelini03@gmail.com" title="Gmail">
+     <img src="https://img.shields.io/badge/-Gmail-FF0000?style=flat-square&labelColor=FF0000&logo=gmail&logoColor=white" alt="Gmail" style='height: 25px'/>
+  </a>
+  <a href="https://www.linkedin.com/in/laís-martelini/" title="LinkedIn">
+     <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white" style='height: 25px' alt="LinkedIn"/>
+  </a>
+  <a href="https://api.whatsapp.com/send?phone=14998212174" title="WhatsApp">
+     <img src="https://img.shields.io/badge/-WhatsApp-25d366?style=flat-square&labelColor=25d366&logo=whatsapp&logoColor=white" alt="WhatsApp" style='height: 25px'/>
+  </a>
+</div>
